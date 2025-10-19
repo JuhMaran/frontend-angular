@@ -1,0 +1,45 @@
+<div class="container-measure-list">
+    <h2> Lista de Medidas de Recipientes </h2>
+
+    <!-- Loading -->
+    @if(isLoading) {
+        <div class="loading">
+            <p>Carregando medidas...</p>
+        </div>
+    } @else if (containerMeasures.length === 0) {
+        <div class="empty">
+            <p>Nenhuma medida encontrada.</p>
+        </div>
+    } @else {
+        <table class="measure-table">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Categoria</th>
+                    <th>Tipo</th>
+                    <th>Volume (ml)</th>
+                    <th>Descrição</th>
+                    <th>Ativo</th>
+                    <th>Criado em</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @for (measure of containerMeasures; track measure.id) {
+                    <tr>
+                      <td>{{ measure.id }}</td>
+                      <td>{{ measure.category }}</td>
+                      <td>{{ measure.type }}</td>
+                      <td>{{ measure.volumeMl }}</td>
+                      <td>{{ measure.description || '-' }}</td>
+                      <td>{{ measure.active ? 'Sim' : 'Não' }}</td>
+                      <td>{{ measure.createdDate | date:'dd/MM/yyyy HH:mm' }}</td>
+                    </tr>
+                  }                 
+            </tbody>
+
+        </table>
+    }
+
+</div>

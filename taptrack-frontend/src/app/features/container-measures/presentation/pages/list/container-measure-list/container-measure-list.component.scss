@@ -1,0 +1,103 @@
+/* container-measure-list.component.scss */
+
+.container-measure-list {
+    padding: 1.5rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+
+    h2 {
+        margin-bottom: 1rem;
+        font-size: 1.75rem;
+        color: #222;
+    }
+
+    .loading,
+    .empty {
+        text-align: center;
+        padding: 2rem 1rem;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-top: 1rem;
+
+        p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+    }
+
+    .measure-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+        thead {
+            background-color: #f4f4f4;
+
+            th {
+                padding: 0.75rem 1rem;
+                text-align: left;
+                font-weight: 600;
+                font-size: 0.95rem;
+                border-bottom: 2px solid #ddd;
+                color: #444;
+            }
+        }
+
+        tbody {
+            tr {
+                &:nth-child(even) {
+                    background-color: #fafafa;
+                }
+
+                &:hover {
+                    background-color: #f0f8ff;
+                }
+
+                td {
+                    padding: 0.6rem 1rem;
+                    border-bottom: 1px solid #eee;
+                    font-size: 0.9rem;
+                    color: #555;
+                }
+            }
+        }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .measure-table {
+            display: block;
+            overflow-x: auto;
+
+            thead,
+            tbody,
+            tr,
+            th,
+            td {
+                display: block;
+            }
+
+            th {
+                position: sticky;
+                top: 0;
+                background: #f4f4f4;
+            }
+
+            td {
+                padding-left: 50%;
+                text-align: right;
+                position: relative;
+
+                &::before {
+                    content: attr(data-label);
+                    position: absolute;
+                    left: 1rem;
+                    font-weight: 600;
+                    text-align: left;
+                }
+            }
+        }
+    }
+}
