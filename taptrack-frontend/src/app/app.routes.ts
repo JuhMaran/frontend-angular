@@ -6,16 +6,16 @@ import { ContainerMeasureListComponent } from './features/container-measures/pre
  */
 export const routes: Routes = [
     {
-        path: 'container-measures', // URL da rota no navegador
+        path: 'app/container-measures', // URL da rota no navegador
         component: ContainerMeasureListComponent
     },
     {
         path: '',
-        redirectTo: 'container-measures',
+        redirectTo: 'app/container-measures',
         pathMatch: 'full'
     },
     {
         path: '**',
-        redirectTo: 'container-measures'
+        redirectTo: 'app/container-measures'
     }
 ];
