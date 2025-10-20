@@ -274,7 +274,31 @@ Essa substituição é configurada automaticamente no `angular.json`:
 
 ---
 
-## Nova Estrutura
+## Estrutura /taptrack-frontend
+
+```text
+TAPTRACK-FRONTEND
+├── .angular/
+├── .cursor/          # IA Cursor
+├── .github/          # IA GitHub Copilot
+├── .junie/           # IA Guide Lines
+├── .vscode/
+├── node_modules/
+├── public/
+│   └── favicon.ico
+├── src/
+│   └── app/
+├── .editorconfig
+├── angular.json
+├── package-lock.json
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+└── tsconfig.spec.json
+```
+
+## Estrutura /src
 
 ```text
 src/
@@ -297,7 +321,6 @@ src/
 │   │   │   ├── base.model.ts
 │   │   │   └── response.model.ts
 │   │   └── core.module.ts
-│   │
 │   ├── shared/                   # Componentes, pipes, directives reutilizáveis
 │   │   ├── components/
 │   │   │   ├── button/
@@ -310,7 +333,6 @@ src/
 │   │   ├── directives/
 │   │   ├── pipes/
 │   │   └── shared.module.ts
-│   │
 │   ├── features/                 # Domínios / Módulos de negócio
 │   │   ├── container-measures/
 │   │   │   ├── application/      # Casos de uso / lógica de orquestração
@@ -343,7 +365,6 @@ src/
 │   │   │
 │   │   └── another-feature/
 │   │       └── ...
-│   │
 │   ├── layouts/                  # Layouts e estrutura visual da aplicação
 │   │   ├── main-layout/
 │   │   │   ├── main-layout.component.ts
@@ -351,17 +372,19 @@ src/
 │   │   │   └── main-layout.component.scss
 │   │   └── auth-layout/
 │   │       └── ...
-│   │
 │   ├── app.routes.ts
 │   ├── app.component.ts
 │   ├── app.component.html
 │   └── app.config.ts
-│
 ├── environments/
 │   ├── environment.development.ts
 │   └── environment.ts
-│
-└── main.ts
+├── index.html
+├── main.server.ts
+├── main.ts
+├── proxy.confi.json
+├── server.ts
+└── styles.scss
 ```
 
 ---

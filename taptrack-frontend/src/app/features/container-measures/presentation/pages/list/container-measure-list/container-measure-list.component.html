@@ -1,45 +1,83 @@
 <div class="container-measure-list">
-    <h2> Lista de Medidas de Recipientes </h2>
-
-    <!-- Loading -->
+    <h2>Lista de Medidas de Recipientes</h2>
+  
+    <div class="filters">
+      <label>
+        ID:
+        <input type="number" [(ngModel)]="id" placeholder="Buscar por ID">
+      </label>
+  
+      <label>
+        Categoria:
+        <select [(ngModel)]="category">
+          <option [value]="undefined">-- Selecione --</option>
+          @for (c of categories; track c) {
+            <option [value]="c">{{ c }}</option>
+          }
+        </select>
+      </label>
+      
+      <label>
+        Tipo:
+        <select [(ngModel)]="type">
+          <option [value]="undefined">-- Selecione --</option>
+          @for (t of types; track t) {
+            <option [value]="t">{{ t }}</option>
+          }
+        </select>
+      </label>
+      
+      <label>
+        Ativo:
+        <select [(ngModel)]="active">
+          <option [value]="undefined">-- Selecione --</option>
+          <option [value]="true">Sim</option>
+          <option [value]="false">Não</option>
+        </select>
+      </label>
+      
+      <button (click)="searchById()">Buscar por ID</button>
+      <button (click)="searchWithFilters()">Filtrar</button>
+      <button (click)="clearFilters()">Limpar</button>
+    </div>
+  
+    <hr>
+  
     @if(isLoading) {
-        <div class="loading">
-            <p>Carregando medidas...</p>
-        </div>
+      <div class="loading">
+        <p>Carregando medidas...</p>
+      </div>
     } @else if (containerMeasures.length === 0) {
-        <div class="empty">
-            <p>Nenhuma medida encontrada.</p>
-        </div>
+      <div class="empty">
+        <p>Nenhuma medida encontrada.</p>
+      </div>
     } @else {
-        <table class="measure-table">
-
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Categoria</th>
-                    <th>Tipo</th>
-                    <th>Volume (ml)</th>
-                    <th>Descrição</th>
-                    <th>Ativo</th>
-                    <th>Criado em</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                @for (measure of containerMeasures; track measure.id) {
-                    <tr>
-                      <td>{{ measure.id }}</td>
-                      <td>{{ measure.category }}</td>
-                      <td>{{ measure.type }}</td>
-                      <td>{{ measure.volumeMl }}</td>
-                      <td>{{ measure.description || '-' }}</td>
-                      <td>{{ measure.active ? 'Sim' : 'Não' }}</td>
-                      <td>{{ measure.createdDate | date:'dd/MM/yyyy HH:mm' }}</td>
-                    </tr>
-                  }                 
-            </tbody>
-
-        </table>
+      <table class="measure-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Categoria</th>
+            <th>Tipo</th>
+            <th>Volume (ml)</th>
+            <th>Descrição</th>
+            <th>Ativo</th>
+            <th>Criado em</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (measure of containerMeasures; track measure.id) {
+            <tr>
+              <td>{{ measure.id }}</td>
+              <td>{{ measure.category }}</td>
+              <td>{{ measure.type }}</td>
+              <td>{{ measure.volumeMl }}</td>
+              <td>{{ measure.description || '-' }}</td>
+              <td>{{ measure.active ? 'Sim' : 'Não' }}</td>
+              <td>{{ measure.createdDate | date:'dd/MM/yyyy HH:mm' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
     }
-
 </div>
+  
